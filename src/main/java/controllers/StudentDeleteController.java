@@ -22,7 +22,7 @@ public class StudentDeleteController extends HttpServlet {
             service.delete(id);
             resp.sendRedirect("/student-list.do");
         } catch (SQLException e) {
-            resp.sendRedirect("error.do");
+            resp.sendRedirect("/error.do");
         }
 
 
