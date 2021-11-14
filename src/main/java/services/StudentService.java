@@ -3,6 +3,8 @@ package services;
 import data.StudentDAO;
 import entities.Student;
 
+import java.sql.SQLException;
+
 public class StudentService {
 
     private StudentDAO studentDAO;
@@ -12,8 +14,8 @@ public class StudentService {
         studentDAO = new StudentDAO();
     }
 
-    public void save(Student student){
-        studentDAO.save(student);
+    public int save(Student student) throws SQLException {
+        return studentDAO.save(student);
     }
 
 }

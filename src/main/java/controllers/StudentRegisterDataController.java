@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/student-register.do")
 public class StudentRegisterDataController extends HttpServlet {
@@ -25,7 +26,12 @@ public class StudentRegisterDataController extends HttpServlet {
         String family = req.getParameter("family");
         String major = req.getParameter("major");
         Student student = new Student(name,family,major);
-        studentService.save(student);
-        req.getRequestDispatcher("/WEB-INF/index./jsp").forward(req,resp);
+        try {
+            studentService.save(student);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            //TODO: must dispatch to error page or redirect
+        }
+        req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req,resp);
     }
 }
