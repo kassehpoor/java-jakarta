@@ -28,10 +28,11 @@ public class StudentRegisterDataController extends HttpServlet {
         Student student = new Student(name,family,major);
         try {
             studentService.save(student);
+            resp.sendRedirect("/");
+
         } catch (SQLException e) {
             e.printStackTrace();
-            //TODO: must dispatch to error page or redirect
+            resp.sendRedirect("/error.do");
         }
-        req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req,resp);
     }
 }
