@@ -27,4 +27,9 @@ public class StudentService {
 
         studentDAO.delete(id);
     }
+
+    public void edit(int id, Student student) throws SQLException {
+
+        studentDAO.edit(id, student);
+    }
 }

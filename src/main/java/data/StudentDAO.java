@@ -16,7 +16,7 @@ public class StudentDAO {
     static {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "123456");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "");
         } catch (SQLException e) {
             e.printStackTrace();
         }catch (ClassNotFoundException e) {
@@ -58,6 +58,21 @@ public class StudentDAO {
             PreparedStatement ps = connection.prepareStatement("DELETE FROM STUDENT WHERE ID = ?");
             ps.setInt(1, id);
             int res = ps.executeUpdate();
+        }
+        else
+            throw new SQLException("Connection is null");
+
+    }
+
+    public int edit(int id, Student student) throws SQLException {
+        if(connection != null){
+            PreparedStatement ps = connection.prepareStatement("UPDATE STUDENT (NAME , FAMILY ,MAJOR) VALUES (?, ? , ?)  WHERE ID = ?");
+            ps.setString(1, student.getName());
+            ps.setString(2, student.getFamily());
+            ps.setString(3, student.getMajor());
+            ps.setInt(4, id);
+            int res = ps.executeUpdate();
+            return res;
         }
         else
             throw new SQLException("Connection is null");
