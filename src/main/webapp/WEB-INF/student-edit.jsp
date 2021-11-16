@@ -16,33 +16,23 @@
 
 
 
-
-
-<%
-    String sid = request.getParameter("id");
-    int id = Integer.parseInt(sid);
-    String name = request.getParameter("name");
-    String family = request.getParameter("family");
-    String major = request.getParameter("major");
-    Student student = new Student(id,name,family,major);
-%>
     <form method="post" action="/student-edit.do" >
         <table>
-            <tr>
+            <tr hidden>
                 <td>Id</td>
-                <td><input type="text" name="id" value="<%= student.getId()%>"/></td>
+                <td><input type="text" name="id" value="${std.id}" /></td>
             </tr>
             <tr>
                 <td>Name</td>
-                <td><input type="text" name="name" value="<%= student.getName()%>"/></td>
+                <td><input type="text" name="name" value="${std.name}"/></td>
             </tr>
             <tr>
                 <td>Family</td>
-                <td><input type="text" name="family" value="<%= student.getFamily()%>"/></td>
+                <td><input type="text" name="family" value="${std.family}"/></td>
             </tr>
             <tr>
                 <td>Major</td>
-                <td><input type="text" name="major" value="<%= student.getMajor()%>"/></td>
+                <td><input type="text" name="major" value="${std.major}"/></td>
             </tr>
             <tr>
                 <td><input type="submit" value="Edit"/></td>

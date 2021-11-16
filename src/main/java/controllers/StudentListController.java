@@ -20,8 +20,9 @@ public class StudentListController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-        StudentService service = new StudentService();
         try {
+            StudentService service = new StudentService();
+
             List<Student> students = service.getAll();
 //            ObjectMapper mapper = new ObjectMapper();
 //            String responseText =  mapper.writeValueAsString(students);

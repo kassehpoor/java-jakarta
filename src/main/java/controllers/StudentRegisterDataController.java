@@ -14,10 +14,10 @@ import java.sql.SQLException;
 @WebServlet("/student-register.do")
 public class StudentRegisterDataController extends HttpServlet {
 
-    StudentService studentService;
+
 
     public StudentRegisterDataController(){
-        studentService = new StudentService();
+
     }
 
     @Override
@@ -27,6 +27,7 @@ public class StudentRegisterDataController extends HttpServlet {
         String major = req.getParameter("major");
         Student student = new Student(name,family,major);
         try {
+            StudentService studentService = new StudentService();
             studentService.save(student);
             resp.sendRedirect("/");
 

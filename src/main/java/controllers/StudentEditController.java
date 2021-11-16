@@ -1,5 +1,6 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.ext.SqlBlobSerializer;
 import entities.Student;
 import services.StudentService;
 
@@ -11,11 +12,25 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/student-edit-page.do")
+@WebServlet("/student-edit.do")
 
 public class StudentEditController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/edit.jsp").forward(req,resp);
+        String id = req.getParameter("id");
+        String name = req.getParameter("name");
+        String family = req.getParameter("family");
+        String major = req.getParameter("major");
+
+        Student st = new Student(Integer.parseInt(id),name,family,major);
+
+        try {
+            StudentService service = new StudentService();
+            service.edit(st);
+            resp.sendRedirect("/student-list.do");
+        }catch (SQLException e){
+            resp.sendRedirect("/error.do");
+        }
+
     }
 }

@@ -11,21 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/student-edit.do")
+@WebServlet("/student-fetch-to-edit-page.do")
 
-public class StudentEditDataController extends HttpServlet {
+public class StudentFetchToEditController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String sid = req.getParameter("id");
-        String name = req.getParameter("name");
-        String family = req.getParameter("family");
-        String major = req.getParameter("major");
-        Student student = new Student(name,family,major);
         int id = Integer.parseInt(sid);
-        StudentService service = new StudentService();
         try{
-            service.edit(id, student);
-            resp.sendRedirect("student-list.do");
+            StudentService service = new StudentService();
+            Student student =  service.findById(id);
+            req.setAttribute("std", student);
+            req.getRequestDispatcher("/WEB-INF/student-edit.jsp").forward(req, resp);
         }
         catch (SQLException e) {
             resp.sendRedirect("/error.do");

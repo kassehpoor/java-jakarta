@@ -10,7 +10,7 @@ public class StudentService {
 
     private StudentDAO studentDAO;
 
-    public StudentService() {
+    public StudentService() throws SQLException{
 
         studentDAO = new StudentDAO();
     }
@@ -28,8 +28,12 @@ public class StudentService {
         studentDAO.delete(id);
     }
 
-    public void edit(int id, Student student) throws SQLException {
+    public void edit(Student student) throws SQLException {
 
-        studentDAO.edit(id, student);
+        studentDAO.edit(student);
+    }
+
+    public Student findById(int id) throws SQLException {
+        return studentDAO.findById(id);
     }
 }

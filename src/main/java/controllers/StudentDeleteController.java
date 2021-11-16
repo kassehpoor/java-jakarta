@@ -17,8 +17,9 @@ public class StudentDeleteController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String sid = req.getParameter("id");
         int id = Integer.parseInt(sid);
-        StudentService service = new StudentService();
+
         try {
+            StudentService service = new StudentService();
             service.delete(id);
             resp.sendRedirect("/student-list.do");
         } catch (SQLException e) {
