@@ -1,6 +1,5 @@
 package controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.Student;
 import services.StudentService;
 
@@ -11,29 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
-@WebServlet("/student-list-page.do")
-public class StudentListController extends HttpServlet {
+@WebServlet("/student-find-by-ssn.do")
+public class StudentFindBySsnController extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
+        String ssn =  req.getParameter("ssn");
         try {
             StudentService service = new StudentService();
-
-            List<Student> students = service.getAll();
-//            ObjectMapper mapper = new ObjectMapper();
-//            String responseText =  mapper.writeValueAsString(students);
-//            resp.getWriter().print(responseText);
-            req.setAttribute("list", students);
-            req.getRequestDispatcher("/WEB-INF/student-list.jsp").forward(req, resp);
+//            Student student =  service.findBySsn(ssn);
+            Student student = service.findById(12);
 
         } catch (SQLException e) {
-            resp.sendRedirect("/error.jsp");
+            e.printStackTrace();
         }
-
-
     }
 }

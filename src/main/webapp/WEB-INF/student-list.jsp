@@ -13,7 +13,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>List Form</title>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <script src="/js/main.js" type="application/javascript"></script>
 </head>
 <body>
 
@@ -26,46 +28,20 @@
             <th>Major</th>
             <th>Action</th>
         </tr>
-        <c:forEach items="${list}" var="st">
+        <c:forEach items="${list}" var="st" varStatus="loopstatus" >
+
             <tr>
-                <td>${st.id}</td>
+                <td>${ loopstatus.index + 1}</td>
                 <td>${st.name}</td>
                 <td>${st.family}</td>
                 <td>${st.major}</td>
-                <td> <a href="/student-delete.do?id=${st.id}">X</a> ,
-                    <a href="/student-fetch-to-edit-page.do?id=${st.id}">E</a> </td>
+                <td> <a href="/student-delete.do?id=${st.id}"><img src="/img/icon-delete-16.jpg" style="width: 40px; height: 40px;" onclick="return confirmToDelete()"/></a>
+                    <a href="/student-fetch-to-edit-page.do?id=${st.id}"> <img src="/img/edit.png" class="square40px" onclick="return confirmOnEdit()"/> </a> </td>
             </tr>
         </c:forEach>
 </table>
 
 
-
-
-
-<%--<%--%>
-<%--    List<Student> list = (List<Student>) request.getAttribute("list");--%>
-<%--%>--%>
-<%--<table border="1px solid black">--%>
-<%--    <tr>--%>
-<%--        <th>ID</th>--%>
-<%--        <th>Name</th>--%>
-<%--        <th>Family</th>--%>
-<%--        <th>Major</th>--%>
-<%--        <th>Action</th>--%>
-<%--    </tr>--%>
-
-<%--    <% for (int i = 0; i < list.size(); i++) {%>--%>
-
-<%--        <tr>--%>
-<%--            <td><%= list.get(i).getId()%></td>--%>
-<%--            <td><%= list.get(i).getName()%></td>--%>
-<%--            <td><%= list.get(i).getFamily()%></td>--%>
-<%--            <td><%= list.get(i).getMajor()%></td>--%>
-<%--            <td> <a href="/student-delete.do?id=<%=list.get(i).getId()%> "  >X</a> ,--%>
-<%--                <a href="/student-edit-page.do?id=${list.get(i).getId()}&name=${list.get(i).getName()}&family=${list.get(i).getFamily()}&major=${list.get(i).getMajor()}">E</a> </td>--%>
-<%--        </tr>--%>
-
-<%--    <% } %>--%>
 
 </table>
 </body>

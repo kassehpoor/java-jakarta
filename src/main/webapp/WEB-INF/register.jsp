@@ -11,8 +11,12 @@
     <title>Registration Form</title>
 </head>
 <body>
-    <form method="post" action="/student-register.do" >
+    <form method="post" action="/student-register.do">
         <table>
+            <tr>
+                <td>SSN</td>
+                <td><input type="text" name="ssn"/></td>
+            </tr>
             <tr>
                 <td>Name</td>
                 <td><input type="text" name="name"/></td>

@@ -25,7 +25,8 @@ public class StudentRegisterDataController extends HttpServlet {
         String name = req.getParameter("name");
         String family = req.getParameter("family");
         String major = req.getParameter("major");
-        Student student = new Student(name,family,major);
+        String ssn = req.getParameter("ssn");
+        Student student = new Student(ssn ,name,family,major);
         try {
             StudentService studentService = new StudentService();
             studentService.save(student);

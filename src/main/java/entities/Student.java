@@ -3,14 +3,25 @@ package entities;
 public class Student {
 
     private int id;
+    private String ssn;
     private String name;
     private String family;
     private String major;
 
+
+    public Student(int id, String ssn, String name, String family, String major) {
+        this.id = id;
+        this.ssn = ssn;
+        this.name = name;
+        this.family = family;
+        this.major = major;
+    }
+
     public Student() {
     }
 
-    public Student(String name, String family, String major) {
+    public Student(String ssn, String name, String family, String major) {
+        this.ssn = ssn;
         this.name = name;
         this.family = family;
         this.major = major;
@@ -53,5 +64,13 @@ public class Student {
 
     public void setMajor(String major) {
         this.major = major;
+    }
+
+    public String getSsn() {
+        return ssn;
+    }
+
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
     }
 }

@@ -25,7 +25,8 @@ public class StudentDAO {
     public int save(Student student) throws SQLException {
 
         if (connection != null) {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO STUDENT (NAME , FAMILY ,MAJOR) VALUES (?, ? , ?)");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO STUDENT (SSN, NAME , FAMILY ,MAJOR) VALUES (? , ?, ? , ?)");
+            ps.setString(1, student.getSsn());
             ps.setString(1, student.getName());
             ps.setString(2, student.getFamily());
             ps.setString(3, student.getMajor());
