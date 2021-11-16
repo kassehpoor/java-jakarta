@@ -16,7 +16,7 @@ public class StudentDAO {
     public StudentDAO() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "123456");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "");
         } catch (Exception e) {
             throw new SQLException("Database is not available!");
         }
@@ -25,11 +25,11 @@ public class StudentDAO {
     public int save(Student student) throws SQLException {
 
         if (connection != null) {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO STUDENT (SSN, NAME , FAMILY ,MAJOR) VALUES (? , ?, ? , ?)");
-            ps.setString(1, student.getSsn());
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO STUDENT (NAME , FAMILY ,MAJOR, SSN) VALUES (? , ?, ? , ?)");
             ps.setString(1, student.getName());
             ps.setString(2, student.getFamily());
             ps.setString(3, student.getMajor());
+            ps.setString(4, student.getSsn());
             int res = ps.executeUpdate();
             return res;
         }
@@ -45,7 +45,7 @@ public class StudentDAO {
             ResultSet set = statement.executeQuery("SELECT * FROM STUDENT");
 
             while (set.next()) {
-                Student student = new Student(set.getInt(1), set.getString(2), set.getString(3), set.getString(4));
+                Student student = new Student(set.getInt(1), set.getString(5), set.getString(2), set.getString(3), set.getString(4));
                 students.add(student);
             }
         }
@@ -64,11 +64,12 @@ public class StudentDAO {
 
     public int edit(Student student) throws SQLException {
         if (connection != null) {
-            PreparedStatement ps = connection.prepareStatement("UPDATE STUDENT SET NAME = ?  , FAMILY = ? ,MAJOR = ? WHERE ID = ?");
+            PreparedStatement ps = connection.prepareStatement("UPDATE STUDENT SET NAME = ?  , FAMILY = ? ,MAJOR = ?, SSN = ? WHERE ID = ?");
             ps.setString(1, student.getName());
             ps.setString(2, student.getFamily());
             ps.setString(3, student.getMajor());
-            ps.setInt(4, student.getId());
+            ps.setString(4, student.getSsn());
+            ps.setInt(5, student.getId());
             int res = ps.executeUpdate();
             return res;
         } else
@@ -89,6 +90,7 @@ public class StudentDAO {
                 student.setName(res.getString(2));
                 student.setFamily(res.getString(3));
                 student.setMajor(res.getString(4));
+                student.setSsn(res.getString(5));
             }
         } else
             throw new SQLException("Connection is null");

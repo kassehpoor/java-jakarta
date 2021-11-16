@@ -9,8 +9,20 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <script src="/js/main.js" type="application/javascript"></script>
 </head>
 <body>
-    در عملیات خطایی رخ داده است
+
+<ul class="navigation">
+    <li><a class="active" href="/">Home</a></li>
+    <li><a href="/student-register-page.do">Register a Student</a></li>
+    <li><a href="/student-list-page.do">List of Students</a></li>
+    <li><a href="/student-find-page.do">Search a Student</a></li>
+</ul>
+
+    <div class="alert">
+        <strong>اخطار!</strong>     در عملیات خطایی رخ داده است
+    </div>
 </body>
 </html>

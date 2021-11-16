@@ -26,11 +26,11 @@ public class StudentRegisterDataController extends HttpServlet {
         String family = req.getParameter("family");
         String major = req.getParameter("major");
         String ssn = req.getParameter("ssn");
-        Student student = new Student(ssn ,name,family,major);
+        Student student = new Student(ssn,name,family,major);
         try {
             StudentService studentService = new StudentService();
             studentService.save(student);
-            resp.sendRedirect("/");
+            resp.sendRedirect("/student-list-page.do");
 
         } catch (SQLException e) {
             e.printStackTrace();

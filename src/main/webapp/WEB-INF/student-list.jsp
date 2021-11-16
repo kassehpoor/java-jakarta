@@ -20,27 +20,40 @@
 <body>
 
 
-<table border="1px solid black">
+<ul class="navigation">
+    <li><a class="active" href="/">Home</a></li>
+    <li><a href="/student-register-page.do">Register a Student</a></li>
+    <li><a href="/student-list-page.do">List of Students</a></li>
+    <li><a href="/student-find-page.do">Search a Student</a></li>
+</ul>
+
+<h3>List of Students</h3>
+
+<table class="student-table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Family</th>
+        <th>Major</th>
+        <th>SSN</th>
+        <th>Action</th>
+    </tr>
+    <c:forEach items="${list}" var="st" varStatus="loopstatus">
+
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Family</th>
-            <th>Major</th>
-            <th>Action</th>
+            <td>${ loopstatus.index + 1}</td>
+            <td>${st.name}</td>
+            <td>${st.family}</td>
+            <td>${st.major}</td>
+            <td>${st.ssn}</td>
+            <td><a href="/student-delete.do?id=${st.id}"><img src="/img/icon-delete-16.jpg"
+                                                              style="width: 40px; height: 40px;"
+                                                              onclick="return confirmToDelete()"/></a>
+                <a href="/student-fetch-to-edit-page.do?id=${st.id}"> <img src="/img/edit.png" class="square40px"
+                                                                           onclick="return confirmOnEdit()"/> </a></td>
         </tr>
-        <c:forEach items="${list}" var="st" varStatus="loopstatus" >
-
-            <tr>
-                <td>${ loopstatus.index + 1}</td>
-                <td>${st.name}</td>
-                <td>${st.family}</td>
-                <td>${st.major}</td>
-                <td> <a href="/student-delete.do?id=${st.id}"><img src="/img/icon-delete-16.jpg" style="width: 40px; height: 40px;" onclick="return confirmToDelete()"/></a>
-                    <a href="/student-fetch-to-edit-page.do?id=${st.id}"> <img src="/img/edit.png" class="square40px" onclick="return confirmOnEdit()"/> </a> </td>
-            </tr>
-        </c:forEach>
+    </c:forEach>
 </table>
-
 
 
 </table>

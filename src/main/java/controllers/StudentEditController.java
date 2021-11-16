@@ -21,13 +21,14 @@ public class StudentEditController extends HttpServlet {
         String name = req.getParameter("name");
         String family = req.getParameter("family");
         String major = req.getParameter("major");
+        String ssn = req.getParameter("ssn");
 
-        Student st = new Student(Integer.parseInt(id),name,family,major);
+        Student st = new Student(Integer.parseInt(id),ssn,name,family,major);
 
         try {
             StudentService service = new StudentService();
             service.edit(st);
-            resp.sendRedirect("/student-list.do");
+            resp.sendRedirect("/student-list-page.do");
         }catch (SQLException e){
             resp.sendRedirect("/error.do");
         }

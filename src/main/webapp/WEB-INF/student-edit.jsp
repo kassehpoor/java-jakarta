@@ -11,33 +11,42 @@
 <html>
 <head>
     <title>Edit Form</title>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <script src="/js/main.js" type="application/javascript"></script>
 </head>
 <body>
 
 
+<ul class="navigation">
+    <li><a class="active" href="/">Home</a></li>
+    <li><a href="/student-register-page.do">Register a Student</a></li>
+    <li><a href="/student-list-page.do">List of Students</a></li>
+    <li><a href="/student-find-page.do">Search a Student</a></li>
+</ul>
 
-    <form method="post" action="/student-edit.do" >
-        <table>
-            <tr hidden>
-                <td>Id</td>
-                <td><input type="text" name="id" value="${std.id}" /></td>
-            </tr>
-            <tr>
-                <td>Name</td>
-                <td><input type="text" name="name" value="${std.name}"/></td>
-            </tr>
-            <tr>
-                <td>Family</td>
-                <td><input type="text" name="family" value="${std.family}"/></td>
-            </tr>
-            <tr>
-                <td>Major</td>
-                <td><input type="text" name="major" value="${std.major}"/></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Edit"/></td>
-            </tr>
-        </table>
+<h3>Edit a Student</h3>
+
+<div class="container-box">
+    <form method="post" action="/student-edit.do">
+
+        <label for="sid" hidden>Id</label>
+        <input type="text" id="sid" name="id" hidden value="${std.id}">
+
+        <label for="ssn">SSN</label>
+        <input type="text" id="ssn" name="ssn" placeholder="ssn.." value="${std.ssn}">
+
+        <label for="fname">Name</label>
+        <input type="text" id="fname" name="name" placeholder="name.." value="${std.name}">
+
+        <label for="family">Family</label>
+        <input type="text" id="family" name="family" placeholder="family.." value="${std.family}">
+
+        <label for="major">Major</label>
+        <input type="text" id="major" name="major" placeholder="major.." value="${std.major}">
+
+        <input type="submit" value="Edit">
     </form>
+</div>
+
 </body>
 </html>

@@ -21,7 +21,7 @@ public class StudentDeleteController extends HttpServlet {
         try {
             StudentService service = new StudentService();
             service.delete(id);
-            resp.sendRedirect("/student-list.do");
+            resp.sendRedirect("/student-list-page.do");
         } catch (SQLException e) {
             resp.sendRedirect("/error.do");
         }
