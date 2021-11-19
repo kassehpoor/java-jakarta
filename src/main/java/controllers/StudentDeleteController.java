@@ -13,7 +13,7 @@ import java.sql.SQLException;
 @WebServlet("/student-delete.do")
 public class StudentDeleteController extends HttpServlet {
 
-    @Override
+
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String sid = req.getParameter("id");
         int id = Integer.parseInt(sid);

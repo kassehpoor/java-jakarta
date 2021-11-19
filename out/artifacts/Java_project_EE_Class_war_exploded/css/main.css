@@ -1,0 +1,134 @@
+.square40px {
+    width: 40px;
+    height: 40px;
+}
+
+/* Start Table Style */
+
+.student-table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.student-table td, .student-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.student-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.student-table tr:hover {
+    background-color: #ddd;
+}
+
+.student-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+/* End Table Style */
+
+
+/* Start Navigation Style */
+
+ul.navigation {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul.navigation li {
+    float: left;
+    border-right: 1px solid #bbb;
+}
+
+ul.navigation li:last-child {
+    border-right: none;
+}
+
+ul.navigation li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.navigation li a:hover:not(.active) {
+    background-color: #111;
+}
+
+ul.navigation li a.active {
+    background-color: #04AA6D;
+}
+
+/* End Navigation Style */
+
+
+
+/* Start Alert Style */
+
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    direction: rtl;
+    text-align: right;
+    font-family: system-ui;
+}
+
+.alert.success {background-color: #04AA6D;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+/* End Alert Style */
+
+
+
+/* Start Form Style */
+
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.container-box {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+/* End Form Style */
